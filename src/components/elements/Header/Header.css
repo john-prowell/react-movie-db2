@@ -1,0 +1,38 @@
+.header {
+  margin: 0 auto;
+  background: black;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100px;
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+}
+
+.movie-info-logo {
+  width: 300px;
+  margin-left: 4px;
+  padding-left: 13px;
+  border-left: 1px solid white;
+}
+
+.header-right {
+  width: 400px;
+}
+
+@media (max-width: 768px) {
+  .movie-info-logo {
+    max-width: 250px;
+  }
+}

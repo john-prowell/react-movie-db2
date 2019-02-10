@@ -1,0 +1,22 @@
+.movie-rating-bar-high,
+.movie-rating-bar-medium,
+.movie-rating-bar-low {
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  color: #fff;
+  padding: 0;
+  line-height: 1.3;
+}
+
+.movie-rating-bar-high {
+  background: #16d47b;
+}
+
+.movie-rating-bar-medium {
+  background: #fbb450;
+}
+
+.movie-rating-bar-low {
+  background: #ee5f5b;
+}

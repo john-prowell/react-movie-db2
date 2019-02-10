@@ -1,0 +1,34 @@
+#movie-thumbs {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: auto auto auto auto;
+
+  animation: animateMovieThumbs 1s;
+}
+
+@keyframes animateMovieThumbs {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #movie-thumbs {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #movie-thumbs {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #movie-thumbs {
+    grid-template-columns: repeat(1, auto);
+  }
+}
