@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 
 class Header extends React.Component {
+
   state = {
     sideDrawerOpen: false
   };
@@ -24,6 +25,7 @@ class Header extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     let backdrop;
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
@@ -48,7 +50,7 @@ class Header extends React.Component {
             </Link>
           </div>
           <div className="header-right">
-            <Search />
+            <Search searchMovies={this.props.searchMovies}/>
           </div>
         </div>
       </header>

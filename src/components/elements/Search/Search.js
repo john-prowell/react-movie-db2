@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './Search.css';
 
-const SearchTerm = React.createContext('');
-
 class Search extends React.Component {
   state = {
     value: ''
