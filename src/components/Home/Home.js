@@ -5,11 +5,19 @@ import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
 import './Home.css';
 
-class Home extends Component {  
+class Home extends Component {
   render() {
-    const {movies, loading, total, current, pageSize, pagination} = this.props;
+    const {
+      movies,
+      loading,
+      total,
+      current,
+      pageSize,
+      pagination
+    } = this.props;
+
     return (
-      <React.Fragment>        
+      <React.Fragment>
         <div className="container">
           {/* {this.state.search ? (
                 <h1>Search Results:</h1>

@@ -1,10 +1,6 @@
 import React from 'react';
 import './MovieInfo.css';
-import {
-  IMAGE_BASE_URL,
-  IMAGE_BACKDROP_SIZE,
-  IMAGE_POSTER_SIZE
-} from '../../../config/config';
+import { IMAGE_BASE_URL, IMAGE_BACKDROP_SIZE } from '../../../config/config';
 
 const MovieInfo = props => {
   return (
