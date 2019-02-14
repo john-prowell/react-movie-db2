@@ -10,7 +10,6 @@ import { API_URL } from '../../config/config';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 class App extends Component {
-
   state = {
     movies: [],
     loading: false,
@@ -21,18 +20,24 @@ class App extends Component {
   };
 
   componentDidMount() {
-  this.setState({
+    this.setState({
       loading: true
     });
     // Popular Movies
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+
+    console.log(API_KEY);
     this.fetchMovies(endpoint);
   }
 
   // Pagination
   onChange = page => {
     let endpoint;
-    this.state.searchTerm ? endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.state.searchTerm}&page=${page}` : endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
+    this.state.searchTerm
+      ? (endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${
+          this.state.searchTerm
+        }&page=${page}`)
+      : (endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`);
     this.setState({
       loading: true,
       current: page
@@ -41,11 +46,13 @@ class App extends Component {
     this.fetchMovies(endpoint);
   };
 
+  // Search
   searchMovies = searchTerm => {
     this.setState({
       movies: [],
       loading: true,
-      searchTerm
+      searchTerm,
+      current: 1
     });
 
     let endpoint;
@@ -76,8 +83,20 @@ class App extends Component {
         <React.Fragment>
           <Header searchMovies={this.searchMovies} />
           <Switch>
-            <Route exact path="/" render={(props) => <Home movies={this.state.movies} loading={this.state.loading}
-            total={this.state.total} current={this.state.current} pageSize={20} pagination={this.onChange} searchTerm={this.state.searchTerm} />} />
+            <Route
+              exact
+              path="/"
+              component={props => (
+                <Home
+                  movies={this.state.movies}
+                  loading={this.state.loading}
+                  total={this.state.total}
+                  current={this.state.current}
+                  pageSize={20}
+                  pagination={this.onChange}
+                />
+              )}
+            />
             <Route exact path="/movie/:movieId" component={Movie} />
             <Route component={NotFound} />
           </Switch>
