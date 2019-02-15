@@ -2,6 +2,9 @@ import React from 'react';
 import './HeroImage.css';
 
 const HeroImage = props => {
+  if (props) {
+    console.log(props.image.adult);
+  }
   return (
     <div
       className="hero-image"

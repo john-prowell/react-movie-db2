@@ -4,6 +4,7 @@ import Header from '../elements/Header/Header';
 import Footer from '../elements/Footer/Footer';
 import Home from '../Home/Home';
 import Movie from '../Movie/Movie';
+import LandingPage from '../elements/LandingPage/LandingPage';
 import NotFound from '../elements/NotFound/NotFound';
 import { API_URL } from '../../config/config';
 
@@ -16,7 +17,8 @@ class App extends Component {
     total: null,
     current: 1,
     pageSize: 20,
-    searchTerm: ''
+    searchTerm: '',
+    heroImage: null
   };
 
   componentDidMount() {
@@ -69,6 +71,7 @@ class App extends Component {
       .then(result => result.json())
       .then(result => {
         this.setState({
+          heroImage: this.state.heroImage || result.results[0],
           movies: result.results,
           loading: false,
           total: result.total_pages
@@ -86,16 +89,20 @@ class App extends Component {
             <Route
               exact
               path="/"
-              component={props => (
-                <Home
-                  movies={this.state.movies}
-                  loading={this.state.loading}
-                  total={this.state.total}
-                  current={this.state.current}
-                  pageSize={20}
-                  pagination={this.onChange}
-                />
-              )}
+              component={props =>
+                this.state.heroImage && (
+                  <LandingPage heroImage={this.state.heroImage} />
+                )
+
+                // <Home
+                //   movies={this.state.movies}
+                //   loading={this.state.loading}
+                //   total={this.state.total}
+                //   current={this.state.current}
+                //   pageSize={20}
+                //   pagination={this.onChange}
+                // />
+              }
             />
             <Route exact path="/movie/:movieId" component={Movie} />
             <Route component={NotFound} />
