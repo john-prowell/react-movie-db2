@@ -17,26 +17,24 @@ class Home extends Component {
     } = this.props;
 
     return (
-      <React.Fragment>
-        <div className="container">
-          {/* {this.state.search ? (
+      <div className="container">
+        {/* {this.state.search ? (
                 <h1>Search Results:</h1>
               ) : (
                 <h1>Popular Movies</h1>
               )} */}
-          {loading && <Spinner />}
+        {loading && <Spinner />}
 
-          {movies.length === 0 ? null : <MovieThumbs movies={movies} />}
-          <div className="pagination">
-            <Pagination
-              onChange={pagination}
-              current={current}
-              total={total}
-              pageSize={pageSize}
-            />
-          </div>
+        {movies.length === 0 ? null : <MovieThumbs movies={movies} />}
+        <div className="pagination">
+          <Pagination
+            onChange={pagination}
+            current={current}
+            total={total}
+            pageSize={pageSize}
+          />
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

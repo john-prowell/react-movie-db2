@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { withRouter } from 'react-router-dom';
 import './Search.css';
 
 class Search extends React.Component {
@@ -17,10 +18,15 @@ class Search extends React.Component {
     clearTimeout(this.timeout);
     this.timout = setTimeout(() => {
       this.props.searchMovies(this.state.value);
+      this.props.history.push('/search');
     }, 500);
   };
 
   render() {
+    // if (this.state.value) {
+    //   return <Redirect to="/search" />;
+    // }
+
     return (
       <div className="search">
         <div className="search-content">
@@ -38,4 +44,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default withRouter(Search);

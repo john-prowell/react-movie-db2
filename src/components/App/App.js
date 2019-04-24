@@ -25,10 +25,11 @@ class App extends Component {
     this.setState({
       loading: true
     });
+
     // Popular Movies
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
-    console.log(API_KEY);
+    console.log('mounted');
     this.fetchMovies(endpoint);
   }
 
@@ -93,16 +94,21 @@ class App extends Component {
                 this.state.heroImage && (
                   <LandingPage heroImage={this.state.heroImage} />
                 )
-
-                // <Home
-                //   movies={this.state.movies}
-                //   loading={this.state.loading}
-                //   total={this.state.total}
-                //   current={this.state.current}
-                //   pageSize={20}
-                //   pagination={this.onChange}
-                // />
               }
+            />
+            <Route
+              exact
+              path="/search"
+              component={props => (
+                <Home
+                  movies={this.state.movies}
+                  loading={this.state.loading}
+                  total={this.state.total}
+                  current={this.state.current}
+                  pageSize={20}
+                  pagination={this.onChange}
+                />
+              )}
             />
             <Route exact path="/movie/:movieId" component={Movie} />
             <Route component={NotFound} />
